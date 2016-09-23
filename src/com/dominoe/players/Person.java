@@ -6,7 +6,7 @@
 package com.dominoe.players;
 
 import com.dominoe.players.pieces.PlayerPieces;
-import com.dominoe.exceptions.InvalidPiecePosition;
+import com.dominoe.exceptions.InvalidPiecePositionException;
 import com.dominoe.Board;
 import com.dominoe.pieces.Pieces;
 import com.dominoe.pieces.Piece;
@@ -57,7 +57,7 @@ public class Person  implements Player{
                 Piece selected = pieces.pop(selectedOption);
                 board.push(selected);
             }else{
-                throw new InvalidPiecePosition();
+                throw new InvalidPiecePositionException();
             }
         }while(selectedOption < 0);
     }

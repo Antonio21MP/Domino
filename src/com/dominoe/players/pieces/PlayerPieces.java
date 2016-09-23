@@ -7,12 +7,14 @@ package com.dominoe.players.pieces;
 
 import com.dominoe.pieces.Piece;
 
-/**
- *
- * @author rnexer
- */
 public interface PlayerPieces {
+    
+    public Piece get(int pos);
 
-    public void push(Piece randomPiece);
+    public int getSize();
+
+    public Piece pop(int selectedOption);
+
+    public void push(Piece fromRemainder);
     
 }
