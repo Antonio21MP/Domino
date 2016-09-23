@@ -16,7 +16,7 @@ import com.dominoe.pieces.Pieces;
  */
 public interface Player {
 
-    public void selectPieces(Pieces deck);
+    public void selectPieces(Pieces deck) throws Exception;
 
     public boolean hasPieces();
 
