@@ -5,10 +5,12 @@ import java.util.Random;
 public class ArrayPieces implements Pieces{
 
     private Piece[] remainderPieces;
+    private int size;
     
     @Override
     public void init() {
-        remainderPieces = new Piece[28];
+        size=28;
+        remainderPieces = new Piece[size];
         fillRandom();
     }
 
@@ -31,6 +33,22 @@ public class ArrayPieces implements Pieces{
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public double getSize() {
+        return size;
+    }
+
+    @Override
+    public Piece pop(int index) throws Exception{
+        Piece piece = remainderPieces[index];
+        remainderPieces[index] = null;
+        if (piece!=null) {
+            throw new PieceAlreadyTakenException(index);
+        }
+        size--;
+        return piece;
     }
     
 }

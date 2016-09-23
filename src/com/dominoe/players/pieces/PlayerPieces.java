@@ -12,7 +12,7 @@ import com.dominoe.pieces.Piece;
  * @author rnexer
  */
 public interface PlayerPieces {
-    
-    public Piece get(int pos);
+
+    public void push(Piece randomPiece);
     
 }
