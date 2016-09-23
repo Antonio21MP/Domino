@@ -7,5 +7,7 @@ public interface Pieces {
     public double getSize();
 
     public Piece pop(int randomPosition) throws Exception;
+
+    public Piece popRandomPiece() throws Exception;
     
 }
