@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe;
+package com.dominoe.exceptions;
 
 /**
  *
  * @author rnexer
  */
-public interface Player {
+public class InvalidPiecePosition extends Exception {
 
-    public void selectPieces(Pieces deck);
-
-    public boolean hasPieces();
-
-    public void play(Board board, Pieces deck);
+    public InvalidPiecePosition() {
+    }
     
 }
