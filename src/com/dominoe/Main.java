@@ -7,7 +7,9 @@ package com.dominoe;
 public class Main {
 
     public static void main(String[] args) {
-        
+        DominoeGame dominoe = new DominoeGame(new MatrixBoard());
+        dominoe.init();
+        dominoe.play();
     }
     
 }
