@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.players;
+package com.dominoe.exceptions;
 
 /**
  *
  * @author rnexer
  */
-public class InvalidPlayerPosition extends Exception {
+public class InvalidPiecePositionException extends Exception {
 
-    public InvalidPlayerPosition() {
+    public InvalidPiecePositionException() {
     }
     
 }

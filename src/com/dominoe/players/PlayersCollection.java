@@ -5,7 +5,8 @@
  */
 package com.dominoe.players;
 
-import com.dominoe.Pieces;
+import com.dominoe.exceptions.InvalidPlayerPositionException;
+import com.dominoe.pieces.Pieces;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class PlayersCollection implements Players {
     @Override
     public Player getPlayer(int i) throws Exception {
         if(i >= players.size())
-            throw new InvalidPlayerPosition();
+            throw new InvalidPlayerPositionException();
         else
             return players.get(i);
     }

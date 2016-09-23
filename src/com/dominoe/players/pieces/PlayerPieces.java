@@ -5,8 +5,9 @@
  */
 package com.dominoe.players.pieces;
 
+import com.dominoe.pieces.Piece;
+
 public interface PlayerPieces {
-<<<<<<< HEAD
     
     public Piece get(int pos);
 
@@ -15,9 +16,5 @@ public interface PlayerPieces {
     public Piece pop(int selectedOption);
 
     public void push(Piece fromRemainder);
-=======
-
-    public void push(Piece randomPiece);
->>>>>>> master
     
 }

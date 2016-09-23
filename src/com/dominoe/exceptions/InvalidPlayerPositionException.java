@@ -9,9 +9,9 @@ package com.dominoe.exceptions;
  *
  * @author rnexer
  */
-public class InvalidPiecePosition extends Exception {
+public class InvalidPlayerPositionException extends Exception {
 
-    public InvalidPiecePosition() {
+    public InvalidPlayerPositionException() {
     }
     
 }
