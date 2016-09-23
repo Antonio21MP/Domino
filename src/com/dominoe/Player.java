@@ -5,6 +5,8 @@
  */
 package com.dominoe;
 
+import com.dominoe.pieces.Pieces;
+
 /**
  *
  * @author rnexer

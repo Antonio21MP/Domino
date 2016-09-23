@@ -1,5 +1,7 @@
 package com.dominoe;
 
+import com.dominoe.pieces.Pieces;
+
 class DominoeGame {
 
     private Board board;

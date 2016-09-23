@@ -1,4 +1,4 @@
-package com.dominoe;
+package com.dominoe.pieces;
 
 public interface Pieces {
 
