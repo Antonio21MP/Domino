@@ -5,6 +5,7 @@
  */
 package com.dominoe.players;
 
+import com.dominoe.players.pieces.PlayerPieces;
 import com.dominoe.exceptions.InvalidPiecePosition;
 import com.dominoe.Board;
 import com.dominoe.Pieces;
