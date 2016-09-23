@@ -1,5 +1,7 @@
 package com.dominoe;
 
+import com.dominoe.players.Player;
+
 public interface Players {
 
     public void init();
