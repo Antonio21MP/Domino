@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.pieces;
+package com.dominoe.exceptions;
 
 /**
  *
  * @author kenystev
  */
-class NoMorePiecesException extends Exception {
+public class PieceAlreadyTakenException extends Exception {
 
-    public NoMorePiecesException() {
+    public PieceAlreadyTakenException(int index) {
+        super("Piece in index: "+index+" already taken");
     }
     
 }

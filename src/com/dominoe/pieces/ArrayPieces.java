@@ -1,5 +1,7 @@
 package com.dominoe.pieces;
 
+import com.dominoe.exceptions.NoMorePiecesException;
+import com.dominoe.exceptions.PieceAlreadyTakenException;
 import java.util.Random;
 
 public class ArrayPieces implements Pieces{
@@ -54,7 +56,7 @@ public class ArrayPieces implements Pieces{
     @Override
     public Piece popRandomPiece() throws Exception{
         if(size>0)
-            return pop(--size);
+            return pop(size-1);
         throw new NoMorePiecesException();
     }
     
