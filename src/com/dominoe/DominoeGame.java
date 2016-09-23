@@ -1,5 +1,7 @@
 package com.dominoe;
 
+import com.dominoe.players.Players;
+
 class DominoeGame {
 
     private Board board;
@@ -15,10 +17,8 @@ class DominoeGame {
     
     void init() {
         board.init();
-        players.init();
+        players.init(pieces);
         pieces.init();
-        for(int i = 0; i < players.getSize(); i++)
-            players.getPlayer(i).selectPieces(pieces);
         turn = Turn.init(players, board);
     }
 
