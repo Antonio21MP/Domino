@@ -4,23 +4,29 @@ class DominoeGame {
 
     private Board board;
     private Players players;
-    private Deck deck;
+    private Pieces pieces;
+    private Turn turn;
 
-    public DominoeGame(Board board,Players players, Deck deck) {
+    public DominoeGame(Board board, Players players, Pieces pieces) {
         this.board = board;
         this.players = players;
-        this.deck = deck;
+        this.pieces = pieces;
     }
     
     void init() {
         board.init();
         players.init();
-        deck.init();
-        Turn turn = new Turn();
+        pieces.init();
+        for(int i = 0; i < players.getSize(); i++)
+            players.getPlayer(i).selectPieces(pieces);
+        turn = Turn.init(players);
     }
 
     void play() {
-        
+        do{
+            turn.currentPlayer().play(board, pieces);
+            turn.next();
+        }while(turn.previousPlayer().hasPieces());
     }
     
 }

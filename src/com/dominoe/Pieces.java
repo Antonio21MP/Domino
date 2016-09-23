@@ -1,9 +1,7 @@
 package com.dominoe;
 
-public interface Board {
+public interface Pieces {
 
     public void init();
-
-        
     
 }
