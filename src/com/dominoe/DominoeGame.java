@@ -21,7 +21,7 @@ class DominoeGame {
         pieces.init();
         for(int i = 0; i < players.getSize(); i++)
             players.getPlayer(i).selectPieces(pieces);
-        turn = Turn.init(players);
+        turn = Turn.init(players, board);
     }
 
     void play() {
