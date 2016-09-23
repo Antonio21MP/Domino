@@ -1,6 +1,7 @@
 package com.dominoe;
 
 import com.dominoe.players.Players;
+import com.dominoe.pieces.Pieces;
 
 class DominoeGame {
 
@@ -22,7 +23,7 @@ class DominoeGame {
         turn = Turn.init(players, board);
     }
 
-    void play() {
+    void play() throws Exception {
         do{
             turn.currentPlayer().play(board, pieces);
             turn.next();

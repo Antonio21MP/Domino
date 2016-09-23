@@ -1,6 +1,6 @@
 package com.dominoe.players;
 
-import com.dominoe.Pieces;
+import com.dominoe.pieces.Pieces;
 import com.dominoe.players.Player;
 
 public interface Players {
