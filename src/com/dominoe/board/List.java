@@ -15,18 +15,37 @@ public class List {
     public int getSize(){
         return size;
     }
-    public void pushPiece(Piece piece) throws Exception{
-        Node newNode = new Node();
-        newNode.setPiece(piece);
-        if(isEmpty()){
-            root = newNode;
-        }
-        else{
-            throw new PiecesException(piece);
-        }   
-        size++;
-        }    
-    public void addLeft(Piece piece, Node root){
+    
+    public Piece getLeftValue(){
+        Piece value = getLastLeft(root);
+        return value;
+    }
+    public Piece getRightValue(){
+        Piece value = getLastRight(root);
+        return value;
+    }
+    public Piece getLastLeft(Node root){
+            if(root.getConnectionLeft()){
+                if(root.getLeft() != null){
+                        getLastLeft(root.getLeft());
+                }else{
+                    getLastRight(root);
+                }
+            }
+        return root.getPiece();
+    }
+    
+    public Piece getLastRight(Node root){
+        if(root.getConnectionRight()){
+                if(root.getRight() != null){
+                        getLastRight(root.getRight());
+                }else{
+                    getLastLeft(root);
+                }
+            }
+        return root.getPiece();
+    }
+    public void pushLeft(Piece piece, Node root) throws PiecesException{
         Node newNode = new Node();
         newNode.setPiece(piece);
         if(!root.getConnectionLeft()){
@@ -39,21 +58,22 @@ public class List {
                 root.setLeft(newNode);
             }
             else{
-                addLeft(piece,root.getLeft());
+                throw new PiecesException(piece);
             }
         }
         else if(!root.getConnectionRight()){
-            addRight(piece, root.getLeft());
+            pushRight(piece, root.getLeft());
         }
         else{
-                addLeft(piece,root.getLeft());
+                pushLeft(piece,root.getLeft());
             }
         
     }
     
-    public void addRight(Piece piece, Node root){
+    public void pushRight(Piece piece, Node root) throws PiecesException{
         Node newNode = new Node();
         newNode.setPiece(piece);
+        
         if(!root.getConnectionRight()){
             if(root.getPiece().getSecondValue() == piece.getFirstValue()){
                 newNode.changeConnectionLeft(true);
@@ -64,28 +84,15 @@ public class List {
                 root.setRight(newNode);
             }
             else{
-                addRight(piece,root.getRight());
+                throw new PiecesException(piece);
             }
         }
         else if(!root.getConnectionLeft()){
-            addRight(piece, root.getLeft());
+            pushLeft(piece, root.getLeft());
         }
         else{
-                addRight(piece,root.getRight());
+                pushRight(piece,root.getRight());
             }
         
     }
-    
-//    public void search(Pieces valor){
-//        if (initialize != null){
-//            Node temp = initialize;
-//            int cont = 0;
-//            while (temp != null){
-//                if (temp.getValue()== valor ){
-//                    cont++;
-//                    temp = temp.getRight();
-//                }
-//            }
-//        }
-//    }    
 }
