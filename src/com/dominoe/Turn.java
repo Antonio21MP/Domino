@@ -79,5 +79,4 @@ public class Turn {
         int randomNum = 0 + (int)(Math.random() * players.size()-1);
         currentPlayerIndex = randomNum;
     }
-    
 }
