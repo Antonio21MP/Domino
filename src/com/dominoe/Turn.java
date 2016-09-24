@@ -40,17 +40,10 @@ public class Turn {
     }
 
     Player previousPlayer() throws Exception {
-        Player previous;
-        
         if (currentPlayerIndex == 0) {
-            currentPlayerIndex = players.getSize()-1;
-        } else {
-            currentPlayerIndex--;
+            return players.getPlayer(players.getSize()-1);
         }
-        
-        previous = players.getPlayer(currentPlayerIndex);
-        
-        return previous;
+        return players.getPlayer(currentPlayerIndex-1);
     }
 
     Player currentPlayer() throws Exception {

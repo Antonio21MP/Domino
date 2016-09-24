@@ -6,13 +6,14 @@
 package com.dominoe.players.pieces;
 
 import com.dominoe.pieces.Piece;
+import com.dominoe.pieces.Pieces;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jobarah
  */
-public class PlayerDeck implements PlayerPieces {
+public class PlayerDeck implements PlayerPieces, Pieces {
     
     ArrayList<Piece> pieces;
 
@@ -34,6 +35,11 @@ public class PlayerDeck implements PlayerPieces {
     @Override
     public void push(Piece fromRemainder) {
         pieces.add(fromRemainder);
+    }
+
+    @Override
+    public void init() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
