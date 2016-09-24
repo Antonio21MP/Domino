@@ -22,7 +22,7 @@ public class PlayersCollection implements Players {
     }
 
     @Override
-    public void init(Pieces pieces) {
+    public void init(Pieces pieces) throws Exception {
         for(int i = 0; i < players.size(); i++)
             players.get(i).selectPieces(pieces);
     }
