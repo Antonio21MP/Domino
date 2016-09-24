@@ -30,11 +30,9 @@ public class Person  implements Player{
     }
 
     @Override
-    public void selectPieces(Pieces deck) {
+    public void selectPieces(Pieces deck) throws Exception {
         for(int i = 0 ; i < 7; i++){
-            Random rnd = new Random();
-            int randomPosition = rnd.nextDouble()*deck.getSize();
-            Piece randomPiece = deck.pop(randomPosition);
+            Piece randomPiece = deck.popRandomPiece();
             pieces.push(randomPiece);
         }
     }
