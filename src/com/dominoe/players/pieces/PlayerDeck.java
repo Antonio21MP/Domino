@@ -5,6 +5,7 @@
  */
 package com.dominoe.players.pieces;
 
+import com.dominoe.pieces.ArrayPieces;
 import com.dominoe.pieces.Piece;
 import com.dominoe.pieces.Pieces;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class PlayerDeck implements PlayerPieces, Pieces {
     
     ArrayList<Piece> pieces;
-
+    
     @Override
     public Piece get(int pos) {
         return pieces.get(pos);
@@ -41,7 +42,25 @@ public class PlayerDeck implements PlayerPieces, Pieces {
 
     @Override
     public void init() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        pieces = new ArrayList<>();
     }
-    
+
+    @Override
+    public Piece popRandom() {
+       int randomNum = 0 + (int)(Math.random() * pieces.size()-1); 
+       return pop(randomNum);
+    }
+
+    @Override
+    public Piece getHighestPiece() {
+        int currentSum = 0;
+        Piece highest = new Piece();
+        for(Piece piece : pieces) {
+            int sum = piece.getFirstValue()+piece.getSecondValue();
+            if (sum > currentSum) {
+                highest = piece;
+            }
+        }
+        return highest;
+    }
 }

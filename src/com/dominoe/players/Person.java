@@ -17,8 +17,8 @@ import java.util.Scanner;
  *
  * @author rnexer
  */
-public class Person  implements Player{
-    PlayerPieces pieces;
+public class Person  implements Player {
+    public PlayerPieces pieces;
     private String name;
     Scanner scanner;
     

@@ -20,6 +20,11 @@ public class Piece {
         firstValue = piece.getFirstValue();
         secondValue = piece.getSecondValue();
     }
+    
+    public Piece() {
+        firstValue = 0;
+        secondValue = 0;
+    }
 
     public int getFirstValue() {
         return firstValue;
