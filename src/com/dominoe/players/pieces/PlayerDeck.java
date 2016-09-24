@@ -46,7 +46,7 @@ public class PlayerDeck implements PlayerPieces, Pieces {
     }
 
     @Override
-    public Piece popRandom() {
+    public Piece popRandomPiece() {
        int randomNum = 0 + (int)(Math.random() * pieces.size()-1); 
        return pop(randomNum);
     }
