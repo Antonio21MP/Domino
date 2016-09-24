@@ -29,7 +29,9 @@ public class PlayerDeck implements PlayerPieces, Pieces {
 
     @Override
     public Piece pop(int selectedOption) {
-        return pieces.get(pieces.size()-1);
+        Piece pop = pieces.get(pieces.size()-1);
+        pieces.remove(pop);
+        return pop;
     }
 
     @Override
