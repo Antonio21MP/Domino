@@ -7,12 +7,15 @@ package com.dominoe;
 
 import com.dominoe.players.Players;
 import com.dominoe.players.Player;
+import com.dominoe.players.PlayersCollection;
 
 /**
  *
  * @author rnexer
  */
 public class Turn {
+    Players players;
+    int currentPlayerIndex;
 
     static Turn init(Players players, Board board) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -22,16 +25,36 @@ public class Turn {
         
     }
 
-    void next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Player next() throws Exception {
+        Player next;
+        
+        if (currentPlayerIndex == players.getSize()-1) {
+            currentPlayerIndex = 0;
+        } else {
+            currentPlayerIndex++;
+        }
+        
+        next = players.getPlayer(currentPlayerIndex);
+        
+        return next;
     }
 
-    Player previousPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Player previousPlayer() throws Exception {
+        Player previous;
+        
+        if (currentPlayerIndex == 0) {
+            currentPlayerIndex = players.getSize()-1;
+        } else {
+            currentPlayerIndex--;
+        }
+        
+        previous = players.getPlayer(currentPlayerIndex);
+        
+        return previous;
     }
 
-    Player currentPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Player currentPlayer() throws Exception {
+        return players.getPlayer(currentPlayerIndex);
     }
     
 }
