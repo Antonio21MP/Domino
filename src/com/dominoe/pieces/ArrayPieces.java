@@ -38,7 +38,7 @@ public class ArrayPieces implements Pieces{
     }
 
     @Override
-    public double getSize() {
+    public int getSize() {
         return size;
     }
 

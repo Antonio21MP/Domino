@@ -16,4 +16,6 @@ public interface PlayerPieces {
     
     public Piece getHighestPiece();
     
+    public void push(Piece fromRemainder);
+    
 }

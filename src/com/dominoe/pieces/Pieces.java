@@ -5,11 +5,9 @@ public interface Pieces{
 
     public void init();
     
-    public Piece pop(int selectedOption);
-
-    public void push(Piece fromRemainder);
+    public Piece pop(int selectedOption) throws Exception;
     
     public int getSize();
     
-    public Piece popRandom();
+    public Piece popRandomPiece() throws Exception;
 }
