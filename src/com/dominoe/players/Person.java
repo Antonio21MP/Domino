@@ -52,8 +52,14 @@ public class Person  implements Player{
             if(selectedOption < 0)
                 takePieceFromRemainder(deck);
             else if(selectedOption < pieces.getSize()){
-                Piece selected = pieces.pop(selectedOption);
-                board.push(selected);
+                Piece selectedPiece = pieces.pop(selectedOption);
+                SIDES side = selectSide();
+                if(side == SIDES.IZQUIERDA){
+                    board.pushLeft(selectedPiece);
+                }else{
+                    board.pushRight(selectedPiece);
+                }
+                
             }else{
                 throw new InvalidPiecePositionException();
             }
@@ -70,6 +76,17 @@ public class Person  implements Player{
     private void takePieceFromRemainder(Pieces deck) {
         Piece fromRemainder = deck.popRandomPiece();
         pieces.push(fromRemainder);
+    }
+    
+    private SIDES selectSide()throws Exception{
+        int selection;
+        do{
+            System.out.println("Seleccione lado a colocar la pieza: ");
+            System.out.println("0- Izquierda");
+            System.out.println("1- Derecha");
+            selection = scanner.nextInt();
+        }while(selection < 0 || selection > 1);
+        return selection == 0 ? SIDES.IZQUIERDA : SIDES.DERECHA;
     }
     
 }
