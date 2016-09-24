@@ -3,21 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.pieces;
+package com.dominoe.board;
+
+import com.dominoe.pieces.Piece;
 
 /**
  *
  * @author Jose34mp
  */
-public interface Pieces {
-
-    public void init();
-
-    public double getSize();
-
-    public Piece pop(int randomPosition) throws Exception;
-
-    public Piece popRandomPiece() throws Exception;
+class NotFoundPieceException extends Exception {
+    NotFoundPieceException(Piece piece) {
+        super(piece + " Not Found");
+    }
     
 }
-

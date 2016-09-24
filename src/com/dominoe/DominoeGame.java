@@ -1,5 +1,6 @@
 package com.dominoe;
 
+import com.dominoe.board.Board;
 import com.dominoe.players.Players;
 import com.dominoe.pieces.Pieces;
 
@@ -18,8 +19,8 @@ class DominoeGame {
     
     void init() {
         board.init();
-        players.init(pieces);
         pieces.init();
+        players.init(pieces);
         turn = Turn.init(players, board);
     }
 

@@ -5,6 +5,7 @@
  */
 package com.dominoe;
 
+import com.dominoe.board.Board;
 import com.dominoe.players.Players;
 import com.dominoe.players.Player;
 import com.dominoe.players.PlayersCollection;

@@ -1,6 +1,6 @@
 package com.dominoe.pieces;
 
-enum PIECES {
+enum ALLPIECES {
     ZERO(0,0),
     ZERO_ONE(0,1), ONE(1,1), 
     ZERO_TWO(0,2), ONE_TWO(1,2), TWO(2,2),
@@ -9,7 +9,7 @@ enum PIECES {
     ZERO_FIVE(0,5), ONE_FIVE(1,5), TWO_FIVE(2,5), THREE_FIVE(3,5), FOUR_FIVE(4,5), FIVE(5,5),
     ZERO_SIX(0,6), ONE_SIX(1,6), TWO_SIX(2,6), THREE_SIX(3,6), FOUR_SIX(4,6), FIVE_SIX(5,6), SIX(6,6);
     
-    PIECES(int first, int second){
+    ALLPIECES(int first, int second){
         this.firstValue = first;
         this.secondValue = second;
     }

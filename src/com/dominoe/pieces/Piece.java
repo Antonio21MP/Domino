@@ -15,8 +15,8 @@ public class Piece {
     private final int secondValue;
 
     Piece(int pieceIndex) {
-        PIECES piece;
-        piece = PIECES.values()[pieceIndex];
+        ALLPIECES piece;
+        piece = ALLPIECES.values()[pieceIndex];
         firstValue = piece.getFirstValue();
         secondValue = piece.getSecondValue();
     }

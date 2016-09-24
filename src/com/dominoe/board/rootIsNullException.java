@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.pieces;
+package com.dominoe.board;
 
 /**
  *
  * @author Jose34mp
  */
-public interface Pieces {
+class rootIsNullException extends Exception {
 
-    public void init();
-
-    public double getSize();
-
-    public Piece pop(int randomPosition) throws Exception;
-
-    public Piece popRandomPiece() throws Exception;
+    public rootIsNullException() {
+        super("The root is Null");
+    }
     
 }
-
