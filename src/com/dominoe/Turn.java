@@ -64,7 +64,7 @@ public class Turn {
         for (int i = 0; i < players.size(); i++) {
             Piece currentHighest = players.get(i).pieces.getHighestPiece();
             int sum = currentHighest.getFirstValue() + currentHighest.getSecondValue();
-            if (sum > highestSum) {
+            if (sum > highestSum && sum%2 == 0) {
                 highestSum = sum;
                 currentPlayerIndex = i;
             }

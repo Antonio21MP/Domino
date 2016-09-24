@@ -57,7 +57,7 @@ public class PlayerDeck implements PlayerPieces, Pieces {
         Piece highest = new Piece();
         for(Piece piece : pieces) {
             int sum = piece.getFirstValue()+piece.getSecondValue();
-            if (sum > currentSum) {
+            if (sum > currentSum && sum%2 == 0) {
                 highest = piece;
             }
         }
