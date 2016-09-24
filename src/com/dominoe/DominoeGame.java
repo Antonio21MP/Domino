@@ -18,8 +18,8 @@ class DominoeGame {
     
     void init() {
         board.init();
-        players.init(pieces);
         pieces.init();
+        players.init(pieces);
         turn = Turn.init(players, board);
     }
 
