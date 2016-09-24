@@ -2,7 +2,7 @@ package com.dominoe;
 
 import com.dominoe.board.Node;
 
-public interface Pieces {
+public interface Piece {
 
     public void init();
 

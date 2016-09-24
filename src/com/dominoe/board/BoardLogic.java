@@ -1,7 +1,7 @@
 package com.dominoe.board;
 
 import com.dominoe.Board;
-import com.dominoe.Pieces;
+import com.dominoe.Piece;
 public class BoardLogic implements Board {
     List board;
     
@@ -9,7 +9,7 @@ public class BoardLogic implements Board {
     public void init() {
         board = new List();
     }
-    public void push(Pieces value) throws PiecesException{
-        board.pushPiece(value);
+    public void push(Piece value) throws PiecesException{
+        board.pushPiece( value);
     }
 }

@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.board;
-
-import com.dominoe.Piece;
+package com.dominoe.exceptions;
 
 /**
  *
- * @author Jose34mp
+ * @author kenystev
  */
-class PiecesException extends Exception {
-    PiecesException(Piece value) {
-        super(value + " Not Found");
+public class NoMorePiecesException extends Exception {
+
+    public NoMorePiecesException() {
     }
     
 }

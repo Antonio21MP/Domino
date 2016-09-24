@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe;
+package com.dominoe.players;
+
+import com.dominoe.Board;
+import com.dominoe.pieces.*;
+
+import com.dominoe.pieces.Pieces;
 
 /**
  *
@@ -11,10 +16,10 @@ package com.dominoe;
  */
 public interface Player {
 
-    public void selectPieces(Pieces deck);
+    public void selectPieces(Pieces deck) throws Exception;
 
     public boolean hasPieces();
 
-    public void play(Board board, Pieces deck);
+    public void play(Board board, Pieces deck) throws Exception ;
     
 }

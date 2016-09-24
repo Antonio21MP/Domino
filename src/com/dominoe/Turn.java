@@ -5,18 +5,21 @@
  */
 package com.dominoe;
 
+import com.dominoe.players.Players;
+import com.dominoe.players.Player;
+
 /**
  *
  * @author rnexer
  */
 public class Turn {
+
+    static Turn init(Players players, Board board) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public Turn(){
         
-    }
-
-    public static Turn init(Players players){
-        return null;
     }
 
     void next() {
