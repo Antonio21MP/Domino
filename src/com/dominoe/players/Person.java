@@ -53,8 +53,8 @@ public class Person  implements Player{
                 takePieceFromRemainder(deck);
             else if(selectedOption < pieces.getSize()){
                 Piece selectedPiece = pieces.pop(selectedOption);
-                SIDES side = selectSide();
-                if(side == SIDES.IZQUIERDA){
+                SIDES selectedSide = selectSide();
+                if(selectedSide == SIDES.IZQUIERDA){
                     board.pushLeft(selectedPiece);
                 }else{
                     board.pushRight(selectedPiece);
@@ -73,8 +73,8 @@ public class Person  implements Player{
         }
     }
 
-    private void takePieceFromRemainder(Pieces deck) {
-        Piece fromRemainder = deck.popRandomPiece();
+    private void takePieceFromRemainder(Pieces deck) throws Exception{
+        Piece fromRemainder = deck.popRandomPiece( );
         pieces.push(fromRemainder);
     }
     
