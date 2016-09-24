@@ -19,7 +19,7 @@ import java.util.Iterator;
  */
 public class Turn {
     ArrayList<Person> players;
-    static int currentPlayerIndex;
+    static int currentPlayerIndex = -1;
 
     static Turn init(PlayersCollection players, Board board) throws Exception {
        Turn turn = new Turn();
@@ -59,17 +59,25 @@ public class Turn {
     }
     
     void setInitialPLayer() {
-        int highestSum = 0;
+        int currentLargest = -1;
         
         for (int i = 0; i < players.size(); i++) {
             Piece currentHighest = players.get(i).pieces.getHighestPiece();
-            int sum = currentHighest.getFirstValue() + currentHighest.getSecondValue();
-            if (sum > highestSum && sum%2 == 0) {
-                highestSum = sum;
+            int firstValue = currentHighest.getFirstValue();
+            if (firstValue > currentLargest && (firstValue == currentHighest.getSecondValue())) {
+                currentLargest = firstValue;
                 currentPlayerIndex = i;
             }
         }
+        if (currentPlayerIndex == -1) {
+            setRandomPlayer();
+        }
         
+    }
+
+    private void setRandomPlayer() {
+        int randomNum = 0 + (int)(Math.random() * players.size()-1);
+        currentPlayerIndex = randomNum;
     }
     
 }

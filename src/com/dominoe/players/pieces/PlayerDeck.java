@@ -53,14 +53,19 @@ public class PlayerDeck implements PlayerPieces, Pieces {
 
     @Override
     public Piece getHighestPiece() {
-        int currentSum = 0;
+        int currentLargest = -1;
         Piece highest = new Piece();
         for(Piece piece : pieces) {
-            int sum = piece.getFirstValue()+piece.getSecondValue();
-            if (sum > currentSum && sum%2 == 0) {
+            int firstValue = piece.getFirstValue();
+            if (firstValue > currentLargest && (firstValue == piece.getSecondValue())) {
+                currentLargest = firstValue;
                 highest = piece;
             }
         }
+        if (currentLargest == -1) {
+            return null;
+        }
+        
         return highest;
     }
 }
