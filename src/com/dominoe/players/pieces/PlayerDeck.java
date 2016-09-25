@@ -5,17 +5,19 @@
  */
 package com.dominoe.players.pieces;
 
+import com.dominoe.pieces.ArrayPieces;
 import com.dominoe.pieces.Piece;
+import com.dominoe.pieces.Pieces;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jobarah
  */
-public class PlayerDeck implements PlayerPieces {
+public class PlayerDeck implements PlayerPieces, Pieces {
     
     ArrayList<Piece> pieces;
-
+    
     @Override
     public Piece get(int pos) {
         return pieces.get(pos);
@@ -28,12 +30,42 @@ public class PlayerDeck implements PlayerPieces {
 
     @Override
     public Piece pop(int selectedOption) {
-        return pieces.get(pieces.size()-1);
+        Piece pop = pieces.get(pieces.size()-1);
+        pieces.remove(pop);
+        return pop;
     }
 
     @Override
     public void push(Piece fromRemainder) {
         pieces.add(fromRemainder);
     }
-    
+
+    @Override
+    public void init() {
+        pieces = new ArrayList<>();
+    }
+
+    @Override
+    public Piece popRandomPiece() {
+       int randomNum = 0 + (int)(Math.random() * pieces.size()-1); 
+       return pop(randomNum);
+    }
+
+    @Override
+    public Piece getHighestPiece() {
+        int currentLargest = -1;
+        Piece highest = new Piece();
+        for(Piece piece : pieces) {
+            int firstValue = piece.getFirstValue();
+            if (firstValue > currentLargest && (firstValue == piece.getSecondValue())) {
+                currentLargest = firstValue;
+                highest = piece;
+            }
+        }
+        if (currentLargest == -1) {
+            return null;
+        }
+        
+        return highest;
+    }
 }

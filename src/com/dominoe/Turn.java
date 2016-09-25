@@ -5,21 +5,29 @@
  */
 package com.dominoe;
 
+import com.dominoe.pieces.Piece;
+import com.dominoe.players.Person;
 import com.dominoe.board.Board;
 import com.dominoe.players.Players;
 import com.dominoe.players.Player;
 import com.dominoe.players.PlayersCollection;
+import java.util.ArrayList;
 
 /**
  *
  * @author rnexer
  */
 public class Turn {
-    Players players;
-    int currentPlayerIndex;
+    ArrayList<Person> players;
+    static int currentPlayerIndex = -1;
 
-    static Turn init(Players players, Board board) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    static Turn init(PlayersCollection players, Board board) throws Exception {
+       Turn turn = new Turn();
+       for(int i = 0; i < players.getSize(); i++) {
+           turn.players.add((Person)players.getPlayer(i));
+       }
+       turn.setInitialPLayer();
+       return turn;
     }
     
     public Turn(){
@@ -29,33 +37,46 @@ public class Turn {
     Player next() throws Exception {
         Player next;
         
-        if (currentPlayerIndex == players.getSize()-1) {
+        if (currentPlayerIndex == players.size()-1) {
             currentPlayerIndex = 0;
         } else {
             currentPlayerIndex++;
         }
         
-        next = players.getPlayer(currentPlayerIndex);
-        
+        next = players.get(currentPlayerIndex);
         return next;
     }
 
     Player previousPlayer() throws Exception {
-        Player previous;
-        
         if (currentPlayerIndex == 0) {
-            currentPlayerIndex = players.getSize()-1;
-        } else {
-            currentPlayerIndex--;
+            return players.get(players.size()-1);
         }
-        
-        previous = players.getPlayer(currentPlayerIndex);
-        
-        return previous;
+        return players.get(currentPlayerIndex-1);
     }
 
     Player currentPlayer() throws Exception {
-        return players.getPlayer(currentPlayerIndex);
+        return players.get(currentPlayerIndex);
     }
     
+    void setInitialPLayer() {
+        int currentLargest = -1;
+        
+        for (int i = 0; i < players.size(); i++) {
+            Piece currentHighest = players.get(i).pieces.getHighestPiece();
+            int firstValue = currentHighest.getFirstValue();
+            if (firstValue > currentLargest && (firstValue == currentHighest.getSecondValue())) {
+                currentLargest = firstValue;
+                currentPlayerIndex = i;
+            }
+        }
+        if (currentPlayerIndex == -1) {
+            setRandomPlayer();
+        }
+        
+    }
+
+    private void setRandomPlayer() {
+        int randomNum = 0 + (int)(Math.random() * players.size()-1);
+        currentPlayerIndex = randomNum;
+    }
 }

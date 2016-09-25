@@ -6,15 +6,16 @@
 package com.dominoe.players.pieces;
 
 import com.dominoe.pieces.Piece;
+import com.dominoe.pieces.Pieces;
 
 public interface PlayerPieces {
     
     public Piece get(int pos);
 
     public int getSize();
-
-    public Piece pop(int selectedOption);
-
+    
+    public Piece getHighestPiece();
+    
     public void push(Piece fromRemainder);
     
 }

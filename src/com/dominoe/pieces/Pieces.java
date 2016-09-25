@@ -5,19 +5,15 @@
  */
 package com.dominoe.pieces;
 
-/**
- *
- * @author Jose34mp
- */
-public interface Pieces {
+
+
+public interface Pieces{
 
     public void init();
-
-    public double getSize();
-
-    public Piece pop(int randomPosition) throws Exception;
-
-    public Piece popRandomPiece() throws Exception;
     
+    public Piece pop(int selectedOption) throws Exception;
+    
+    public int getSize();
+    
+    public Piece popRandomPiece() throws Exception;
 }
-
