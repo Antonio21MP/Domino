@@ -11,8 +11,8 @@ import com.dominoe.Piece;
  *
  * @author Jose34mp
  */
-class PiecesException extends Exception {
-    PiecesException(Piece piece) {
+class NotFoundException extends Exception {
+    NotFoundException(Piece piece) {
         super(piece + " Not Found");
     }
     
