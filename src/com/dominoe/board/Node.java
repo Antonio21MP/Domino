@@ -1,6 +1,7 @@
 package com.dominoe.board;
 
 import com.dominoe.pieces.Piece;
+import com.dominoe.players.SIDES;
 
 public class Node {
     private Piece piece;
@@ -41,7 +42,7 @@ public class Node {
 
     public void setRight(Node right) {
         this.right = right;
-        this.connection_right = true;
+        changeConnectionRight(true);
     }
     
     public Node getLeft() {
@@ -50,12 +51,19 @@ public class Node {
 
     public void setLeft(Node left) {
         this.left = left;
-        this.connection_left = true;
+        changeConnectionLeft(true);
     }
     public void changeConnectionLeft(boolean value){
         this.connection_left = value;
+        piece.setConnectedWith(SIDES.IZQUIERDA);
     }
     public void changeConnectionRight(boolean value){
         this.connection_right = value;
+        piece.setConnectedWith(SIDES.DERECHA);
+    }
+
+    @Override
+    public String toString() {
+        return piece+"";
     }
 }

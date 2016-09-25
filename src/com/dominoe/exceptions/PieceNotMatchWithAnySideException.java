@@ -5,6 +5,7 @@
  */
 package com.dominoe.exceptions;
 
+import com.dominoe.board.Node;
 import com.dominoe.pieces.Piece;
 
 /**
@@ -13,7 +14,11 @@ import com.dominoe.pieces.Piece;
  */
 public class PieceNotMatchWithAnySideException extends Exception {
     public PieceNotMatchWithAnySideException(Piece piece) {
-        super(piece + " Not Found");
+        super(piece + " No Match");
+    }
+
+    public PieceNotMatchWithAnySideException(Node newNode) {
+        super(newNode + "No Match");
     }
     
 }

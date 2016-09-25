@@ -47,8 +47,10 @@ public class Person  implements Player {
     public void play(Board board, Pieces deck) throws Exception {
         int selectedOption;
         do{
+            System.out.println("Turno de: "+name);
             System.out.println("Ingrese la posicion de la pieza a colocar o -1 para tomar de las sobrantes: ");
             printMyPieces();
+            System.out.print("escoja: ");
             selectedOption = scanner.nextInt();
             if(selectedOption < 0)
                 takePieceFromRemainder(deck);

@@ -5,6 +5,8 @@
  */
 package com.dominoe.pieces;
 
+import com.dominoe.players.SIDES;
+
 /**
  *
  * @author kenystev
@@ -13,6 +15,8 @@ public class Piece {
 
     private final int firstValue;
     private final int secondValue;
+    private boolean firstValueConnected;
+    private boolean secondValueConnected;
 
     Piece(int pieceIndex) {
         ALLPIECES piece;
@@ -38,9 +42,17 @@ public class Piece {
         return (firstValue == p.firstValue && secondValue == p.secondValue) 
                 || (firstValue == p.secondValue && secondValue == p.firstValue);
     }
+    
+    public void setConnectedWith(SIDES side){
+        if(side==SIDES.IZQUIERDA){
+            firstValueConnected = true;
+        }else if(side == SIDES.DERECHA){
+            secondValueConnected = true;
+        }
+    }
 
     @Override
     public String toString() {
-        return "|"+firstValue+"-"+secondValue+"|";
+        return "|"+firstValue+"-"+secondValue+"| <-> |"+(firstValueConnected?1:0) + "-"+(secondValueConnected?1:0)+"|";
     }
 }

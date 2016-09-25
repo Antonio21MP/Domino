@@ -30,7 +30,7 @@ public class BoardLogic implements Board {
             System.out.println("Left: "+left);
             System.out.println("Right: "+right);
         }catch(RootIsNullException e){
-            System.out.println("NaN|NaN");
+            System.out.println("|NaN-NaN|");
         }
         
     }
