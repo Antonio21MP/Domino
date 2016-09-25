@@ -70,7 +70,7 @@ public class Person  implements Player {
     private void printMyPieces() {
         for (int i = 0; i < pieces.getSize(); i++) {
             Piece current = pieces.get(i);
-            System.out.println(i + " - " + current.getFirstValue() + "|" + current.getSecondValue());
+            System.out.println(i + " - " + current);
         }
     }
 

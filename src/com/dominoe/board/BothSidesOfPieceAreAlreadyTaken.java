@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.exceptions;
+package com.dominoe.board;
 
 import com.dominoe.pieces.Piece;
 
 /**
  *
- * @author Jose34mp
+ * @author kenystev
  */
-public class PieceNotFoundException extends Exception {
-    public PieceNotFoundException(Piece piece) {
-        super(piece + " Not Found");
+public class BothSidesOfPieceAreAlreadyTaken extends Exception {
+
+    public BothSidesOfPieceAreAlreadyTaken(Piece root) {
+        super(root.toString());
     }
     
 }

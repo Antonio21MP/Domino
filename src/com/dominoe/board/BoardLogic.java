@@ -1,7 +1,7 @@
 package com.dominoe.board;
 
 import com.dominoe.exceptions.RootIsNullException;
-import com.dominoe.exceptions.PieceNotFoundException;
+import com.dominoe.exceptions.PieceNotMatchWithAnySideException;
 import com.dominoe.pieces.Piece;
 public class BoardLogic implements Board {
     List board;
@@ -11,13 +11,12 @@ public class BoardLogic implements Board {
     }
 
     @Override
-    public void pushLeft(Piece selectedPiece) throws PieceNotFoundException{
-            board.pushLeft(selectedPiece);
-        
+    public void pushLeft(Piece selectedPiece) throws Exception{
+            board.pushLeft(selectedPiece);        
     }
     
     @Override
-    public void pushRight(Piece selectedPiece) throws PieceNotFoundException {
+    public void pushRight(Piece selectedPiece) throws Exception {
             board.pushRight(selectedPiece);
         
     }
@@ -28,8 +27,8 @@ public class BoardLogic implements Board {
             Piece left = board.getLeftValue();
             Piece right = board.getRightValue();
 
-            System.out.println("Left: "+left.getFirstValue()+"|"+left.getSecondValue());
-            System.out.println("Right: "+right.getFirstValue()+"|"+right.getSecondValue());
+            System.out.println("Left: "+left);
+            System.out.println("Right: "+right);
         }catch(RootIsNullException e){
             System.out.println("NaN|NaN");
         }
