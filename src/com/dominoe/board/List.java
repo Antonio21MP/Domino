@@ -7,30 +7,31 @@ public class List {
     private int size;
     public List(){
         root = null;
-        size = 0; 
+     
     }
-    public boolean isEmpty(){
+    private boolean isEmpty(){
         return root ==  null;
     }
-    public int getSize(){
-        return size;
+    private void initRoot(Piece piece){
+        Node newNode = new Node();
+        newNode.setPiece(piece);
+        root = newNode;
     }
-    
     public Piece getLeftValue() throws rootIsNullException{
-        if(isEmpty()){
+        if(!isEmpty()){
             Piece value = getLastLeft(root);
             return value;
         }
         throw new rootIsNullException();
     }
     public Piece getRightValue() throws rootIsNullException{
-        if(isEmpty()){
+        if(!isEmpty()){
             Piece value = getLastRight(root);
             return value;
         }
         throw new rootIsNullException();
     }
-    public Piece getLastLeft(Node root){
+    private Piece getLastLeft(Node root){
             if(root.getConnectionLeft()){
                 if(root.getLeft() != null){
                         getLastLeft(root.getLeft());
@@ -42,7 +43,7 @@ public class List {
         return root.getPiece();
     }
     
-    public Piece getLastRight(Node root){
+    private Piece getLastRight(Node root){
         if(root.getConnectionRight()){
                 if(root.getRight() != null){
                         getLastRight(root.getRight());
@@ -54,19 +55,21 @@ public class List {
         return root.getPiece();
     }
     public void pushLeft(Piece piece) throws NotFoundPieceException, rootIsNullException{
-        if(isEmpty()){
+        if(!isEmpty()){
             addLeft(piece, root);
+        }else{
+            initRoot(piece);
         }
-        throw new rootIsNullException();
     }
     public void pushRight(Piece piece) throws NotFoundPieceException, rootIsNullException{
-      if(isEmpty()){
+      if(!isEmpty()){
             addRight(piece, root);
-        }
-        throw new rootIsNullException();
+        }else{
+          initRoot(piece);
+      }
     }
     
-    public void addLeft(Piece piece, Node root) throws NotFoundPieceException{
+    private void addLeft(Piece piece, Node root) throws NotFoundPieceException{
         Node newNode = new Node();
         newNode.setPiece(piece);
         if(!root.getConnectionLeft()){
@@ -91,7 +94,7 @@ public class List {
         
     }
     
-    public void addRight(Piece piece, Node root) throws NotFoundPieceException{
+    private void addRight(Piece piece, Node root) throws NotFoundPieceException{
         Node newNode = new Node();
         newNode.setPiece(piece);
         
