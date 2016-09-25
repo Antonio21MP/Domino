@@ -62,10 +62,12 @@ public class Turn {
         
         for (int i = 0; i < players.size(); i++) {
             Piece currentHighest = players.get(i).pieces.getHighestPiece();
-            int firstValue = currentHighest.getFirstValue();
-            if (firstValue > currentLargest && (firstValue == currentHighest.getSecondValue())) {
-                currentLargest = firstValue;
-                currentPlayerIndex = i;
+            if(currentHighest != null){
+                int firstValue = currentHighest.getFirstValue();
+                if (firstValue > currentLargest && (firstValue == currentHighest.getSecondValue())) {
+                    currentLargest = firstValue;
+                    currentPlayerIndex = i;
+                }
             }
         }
         if (currentPlayerIndex == -1) {

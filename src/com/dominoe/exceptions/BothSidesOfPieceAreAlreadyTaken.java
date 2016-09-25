@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.board;
+package com.dominoe.exceptions;
 
 import com.dominoe.pieces.Piece;
 
