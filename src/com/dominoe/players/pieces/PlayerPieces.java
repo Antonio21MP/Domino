@@ -8,7 +8,7 @@ package com.dominoe.players.pieces;
 import com.dominoe.pieces.Piece;
 import com.dominoe.pieces.Pieces;
 
-public interface PlayerPieces {
+public interface PlayerPieces extends Pieces{
     
     public Piece get(int pos);
 

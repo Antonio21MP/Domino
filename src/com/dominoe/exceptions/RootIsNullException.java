@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dominoe.board;
+package com.dominoe.exceptions;
 
 /**
  *
  * @author Jose34mp
  */
-class rootIsNullException extends Exception {
+public class RootIsNullException extends Exception {
 
-    public rootIsNullException() {
+    public RootIsNullException() {
         super("The root is Null");
     }
     

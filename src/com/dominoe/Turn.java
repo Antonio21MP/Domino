@@ -10,7 +10,6 @@ import com.dominoe.players.Person;
 import com.dominoe.board.Board;
 import com.dominoe.players.Players;
 import com.dominoe.players.Player;
-import com.dominoe.players.PlayersCollection;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +20,7 @@ public class Turn {
     ArrayList<Person> players;
     static int currentPlayerIndex = -1;
 
-    static Turn init(PlayersCollection players, Board board) throws Exception {
+    static Turn init(Players players, Board board) throws Exception {
        Turn turn = new Turn();
        for(int i = 0; i < players.getSize(); i++) {
            turn.players.add((Person)players.getPlayer(i));
@@ -31,7 +30,7 @@ public class Turn {
     }
     
     public Turn(){
-        
+        players = new ArrayList<>();
     }
 
     Player next() throws Exception {

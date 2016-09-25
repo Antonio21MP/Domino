@@ -5,16 +5,14 @@
  */
 package com.dominoe.players.pieces;
 
-import com.dominoe.pieces.ArrayPieces;
 import com.dominoe.pieces.Piece;
-import com.dominoe.pieces.Pieces;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jobarah
  */
-public class PlayerDeck implements PlayerPieces, Pieces {
+public class PlayerDeck implements PlayerPieces {
     
     ArrayList<Piece> pieces;
     
