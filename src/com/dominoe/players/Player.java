@@ -5,7 +5,7 @@
  */
 package com.dominoe.players;
 
-import com.dominoe.Board;
+import com.dominoe.board.Board;
 import com.dominoe.pieces.*;
 
 import com.dominoe.pieces.Pieces;
@@ -16,7 +16,7 @@ import com.dominoe.pieces.Pieces;
  */
 public interface Player {
 
-    public void selectPieces(Pieces deck);
+    public void selectPieces(Pieces deck) throws Exception;
 
     public boolean hasPieces();
 
