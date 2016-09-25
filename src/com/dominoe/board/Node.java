@@ -1,6 +1,6 @@
 package com.dominoe.board;
 
-import com.dominoe.Piece;
+import com.dominoe.pieces.Piece;
 
 public class Node {
     private Piece piece;

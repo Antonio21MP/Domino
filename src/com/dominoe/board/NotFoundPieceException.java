@@ -5,14 +5,14 @@
  */
 package com.dominoe.board;
 
-import com.dominoe.Piece;
+import com.dominoe.pieces.Piece;
 
 /**
  *
  * @author Jose34mp
  */
-class NotFoundException extends Exception {
-    NotFoundException(Piece piece) {
+class NotFoundPieceException extends Exception {
+    NotFoundPieceException(Piece piece) {
         super(piece + " Not Found");
     }
     
