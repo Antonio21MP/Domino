@@ -34,4 +34,13 @@ public class Piece {
         return secondValue;
     }
     
+    public boolean equals(Piece p){
+        return (firstValue == p.firstValue && secondValue == p.secondValue) 
+                || (firstValue == p.secondValue && secondValue == p.firstValue);
+    }
+
+    @Override
+    public String toString() {
+        return "|"+firstValue+"-"+secondValue+"|";
+    }
 }

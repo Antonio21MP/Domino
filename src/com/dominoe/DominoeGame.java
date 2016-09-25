@@ -26,9 +26,13 @@ class DominoeGame {
 
     void play() throws Exception {
         do{
-            board.printBorad();
-            turn.currentPlayer().play(board, pieces);
-            turn.next();
+            try {
+                board.printBorad();
+                turn.currentPlayer().play(board, pieces);
+                turn.next();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }while(turn.previousPlayer().hasPieces());
     }
     

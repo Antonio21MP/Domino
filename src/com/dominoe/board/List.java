@@ -1,8 +1,9 @@
 package com.dominoe.board;
 
-import com.dominoe.exceptions.PieceNotFoundException;
+import com.dominoe.exceptions.PieceNotMatchWithAnySideException;
 import com.dominoe.exceptions.RootIsNullException;
 import com.dominoe.pieces.Piece;
+import com.dominoe.players.SIDES;
 
 public class List {
     private Node root;
@@ -21,8 +22,7 @@ public class List {
     }
     public Piece getLeftValue() throws RootIsNullException{
         if(!isEmpty()){
-            Piece value = getLastLeft(root);
-            return value;
+            return getLastLeft(root);
         }
         throw new RootIsNullException();
     }
@@ -34,38 +34,26 @@ public class List {
         throw new RootIsNullException();
     }
     private Piece getLastLeft(Node root){
-            if(root.getConnectionLeft()){
-                if(root.getLeft() != null){
-                        getLastLeft(root.getLeft());
-                }
-                /*else{
-                   Piece temp = getLastRight(root);
-                   return temp;
-                }*/
-            }
+        if(root.getLeft() != null){
+            return getLastLeft(root.getLeft());
+        }
         return root.getPiece();
     }
     
     private Piece getLastRight(Node root){
-        if(root.getConnectionRight()){
-                if(root.getRight() != null){
-                        getLastRight(root.getRight());
-                }
-                /*else{
-                    Piece temp =getLastLeft(root);
-                    return temp;
-                }*/
-            }
+        if(root.getRight() != null){
+                return getLastRight(root.getRight());
+        }
         return root.getPiece();
     }
-    public void pushLeft(Piece piece) throws PieceNotFoundException{
+    public void pushLeft(Piece piece) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken{
         if(!isEmpty()){
             addLeft(piece, root);
         }else{
             initRoot(piece);
         }
     }
-    public void pushRight(Piece piece) throws PieceNotFoundException{
+    public void pushRight(Piece piece) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken{
       if(!isEmpty()){
             addRight(piece, root);
         }else{
@@ -73,54 +61,60 @@ public class List {
       }
     }
     
-    private void addLeft(Piece piece, Node root) throws PieceNotFoundException{
+    private void addLeft(Piece piece, Node root) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken{
         Node newNode = new Node();
         newNode.setPiece(piece);
-        if(!root.getConnectionLeft()){
-            if(root.getPiece().getFirstValue() == piece.getFirstValue()){
-                newNode.changeConnectionLeft(true);
-                root.setLeft(newNode);
-            }
-            else if(root.getPiece().getFirstValue() == piece.getSecondValue()){
-                newNode.changeConnectionRight(true);
-                root.setLeft(newNode);
-            }
-            else{
-                throw new PieceNotFoundException(piece);
-            }
-        }
-        else if(root.getLeft()!=null){
-                addLeft(piece,root.getLeft());
-                }
-        else{
-            addRight(piece, root);
-        }
         
+        if(root.getLeft() != null){
+            addLeft(piece, root.getLeft());
+        }else{
+            checkSideOfPieceToConnect(root,newNode);
+        }
     }
     
-    private void addRight(Piece piece, Node root) throws PieceNotFoundException{
+    private void addRight(Piece piece, Node root) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken{
         Node newNode = new Node();
         newNode.setPiece(piece);
         
-        if(!root.getConnectionRight()){
-            if(root.getPiece().getSecondValue() == piece.getFirstValue()){
-                newNode.changeConnectionLeft(true);
-                root.setRight(newNode);
-            }
-            else if(root.getPiece().getSecondValue() == piece.getSecondValue()){
-                newNode.changeConnectionRight(true);
-                root.setRight(newNode);
-            }
-            else{
-                throw new PieceNotFoundException(piece);
-            }
+        if(root.getRight() != null){
+            addRight(piece, root.getRight());
+        }else{
+            checkSideOfPieceToConnect(root, newNode);
         }
-        else if(root.getRight()!=null){
-                addRight(piece,root.getRight());
-                }
-        else{
-            addLeft(piece, root);
+    }
+
+    private void checkSideOfPieceToConnect(Node root, Node newNode) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken {
+        Piece pieceNode = root.getPiece();
+        Piece piece = newNode.getPiece();
+        
+        if(!root.getConnectionLeft()){
+            checkNewPieceSideToConnect(newNode,piece,SIDES.IZQUIERDA);
+        }else if(!root.getConnectionRight()){
+            checkNewPieceSideToConnect(newNode, piece, SIDES.DERECHA);
+        }else{
+            throw new BothSidesOfPieceAreAlreadyTaken(root.getPiece());
+        }
+    }
+
+    private void checkNewPieceSideToConnect(Node newNode, Piece piece, SIDES side) throws PieceNotMatchWithAnySideException {
+        Piece pieceNode = root.getPiece();
+        
+        int valueSideFor = (side==SIDES.IZQUIERDA)?pieceNode.getFirstValue():pieceNode.getSecondValue();
+        
+        if(valueSideFor == piece.getFirstValue()){
+            newNode.changeConnectionLeft(true);
+        }else if(valueSideFor == piece.getSecondValue()){
+            newNode.changeConnectionRight(true);
         }
         
+        if(newNode.getConnectionLeft() || newNode.getConnectionRight()){
+            if(side==SIDES.IZQUIERDA){
+                root.setLeft(newNode);
+            }else{
+                root.setRight(newNode);
+            }
+        }else{
+            throw new PieceNotMatchWithAnySideException(piece);
+        }
     }
 }
