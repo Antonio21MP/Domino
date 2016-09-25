@@ -26,7 +26,7 @@ public class ArrayPieces implements Pieces{
     }
 
     private Piece getRandomPiece(Random random) {
-        return new Piece(random.nextInt(29));
+        return new Piece(random.nextInt(28));
     }
 
     private boolean contains(Piece piece) {

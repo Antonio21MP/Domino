@@ -10,7 +10,7 @@ import com.dominoe.exceptions.InvalidPiecePositionException;
 import com.dominoe.board.Board;
 import com.dominoe.pieces.Pieces;
 import com.dominoe.pieces.Piece;
-import java.util.Random;
+import com.dominoe.players.pieces.PlayerDeck;
 import java.util.Scanner;
 
 /**
@@ -24,7 +24,8 @@ public class Person  implements Player {
     
     public Person(String name){
         super();
-        pieces = new PlayerPieces();
+        pieces = new PlayerDeck();
+        pieces.init();
         this.name = name;
         scanner = new Scanner(System.in);
     }
@@ -69,11 +70,11 @@ public class Person  implements Player {
     private void printMyPieces() {
         for (int i = 0; i < pieces.getSize(); i++) {
             Piece current = pieces.get(i);
-            System.out.print(i + " - " + current.getFirstValue() + "|" + current.getSecondValue());
+            System.out.println(i + " - " + current.getFirstValue() + "|" + current.getSecondValue());
         }
     }
 
-    private void takePieceFromRemainder(Pieces deck) {
+    private void takePieceFromRemainder(Pieces deck) throws Exception{
         Piece fromRemainder = deck.popRandomPiece();
         pieces.push(fromRemainder);
     }
@@ -87,6 +88,11 @@ public class Person  implements Player {
             selection = scanner.nextInt();
         }while(selection < 0 || selection > 1);
         return selection == 0 ? SIDES.IZQUIERDA : SIDES.DERECHA;
+    }
+
+    @Override
+    public Piece getHighest() {
+        return pieces.getHighestPiece();
     }
     
 }

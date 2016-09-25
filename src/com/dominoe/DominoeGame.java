@@ -17,7 +17,7 @@ class DominoeGame {
         this.pieces = pieces;
     }
     
-    void init() {
+    void init() throws Exception{
         board.init();
         pieces.init();
         players.init(pieces);
@@ -26,6 +26,7 @@ class DominoeGame {
 
     void play() throws Exception {
         do{
+            board.printBorad();
             turn.currentPlayer().play(board, pieces);
             turn.next();
         }while(turn.previousPlayer().hasPieces());

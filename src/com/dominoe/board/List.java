@@ -1,5 +1,7 @@
 package com.dominoe.board;
 
+import com.dominoe.exceptions.PieceNotFoundException;
+import com.dominoe.exceptions.RootIsNullException;
 import com.dominoe.pieces.Piece;
 
 public class List {
@@ -17,28 +19,29 @@ public class List {
         newNode.setPiece(piece);
         root = newNode;
     }
-    public Piece getLeftValue() throws rootIsNullException{
+    public Piece getLeftValue() throws RootIsNullException{
         if(!isEmpty()){
             Piece value = getLastLeft(root);
             return value;
         }
-        throw new rootIsNullException();
+        throw new RootIsNullException();
     }
-    public Piece getRightValue() throws rootIsNullException{
+    public Piece getRightValue() throws RootIsNullException{
         if(!isEmpty()){
             Piece value = getLastRight(root);
             return value;
         }
-        throw new rootIsNullException();
+        throw new RootIsNullException();
     }
     private Piece getLastLeft(Node root){
             if(root.getConnectionLeft()){
                 if(root.getLeft() != null){
                         getLastLeft(root.getLeft());
-                }else{
+                }
+                /*else{
                    Piece temp = getLastRight(root);
                    return temp;
-                }
+                }*/
             }
         return root.getPiece();
     }
@@ -47,21 +50,22 @@ public class List {
         if(root.getConnectionRight()){
                 if(root.getRight() != null){
                         getLastRight(root.getRight());
-                }else{
+                }
+                /*else{
                     Piece temp =getLastLeft(root);
                     return temp;
-                }
+                }*/
             }
         return root.getPiece();
     }
-    public void pushLeft(Piece piece) throws NotFoundPieceException{
+    public void pushLeft(Piece piece) throws PieceNotFoundException{
         if(!isEmpty()){
             addLeft(piece, root);
         }else{
             initRoot(piece);
         }
     }
-    public void pushRight(Piece piece) throws NotFoundPieceException{
+    public void pushRight(Piece piece) throws PieceNotFoundException{
       if(!isEmpty()){
             addRight(piece, root);
         }else{
@@ -69,7 +73,7 @@ public class List {
       }
     }
     
-    private void addLeft(Piece piece, Node root) throws NotFoundPieceException{
+    private void addLeft(Piece piece, Node root) throws PieceNotFoundException{
         Node newNode = new Node();
         newNode.setPiece(piece);
         if(!root.getConnectionLeft()){
@@ -82,7 +86,7 @@ public class List {
                 root.setLeft(newNode);
             }
             else{
-                throw new NotFoundPieceException(piece);
+                throw new PieceNotFoundException(piece);
             }
         }
         else if(root.getLeft()!=null){
@@ -94,7 +98,7 @@ public class List {
         
     }
     
-    private void addRight(Piece piece, Node root) throws NotFoundPieceException{
+    private void addRight(Piece piece, Node root) throws PieceNotFoundException{
         Node newNode = new Node();
         newNode.setPiece(piece);
         
@@ -108,7 +112,7 @@ public class List {
                 root.setRight(newNode);
             }
             else{
-                throw new NotFoundPieceException(piece);
+                throw new PieceNotFoundException(piece);
             }
         }
         else if(root.getRight()!=null){
