@@ -1,9 +1,6 @@
 package com.dominoe.board;
 
-import com.dominoe.Board;
 import com.dominoe.pieces.Piece;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 public class BoardLogic implements Board {
     List board;
     @Override
@@ -12,21 +9,15 @@ public class BoardLogic implements Board {
     }
 
     @Override
-    public void pushLeft(Piece selectedPiece) {
-        try {
+    public void pushLeft(Piece selectedPiece) throws NotFoundPieceException{
             board.pushLeft(selectedPiece);
-        } catch (NotFoundPieceException | rootIsNullException ex) {
-            Logger.getLogger(BoardLogic.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
-
+    
     @Override
-    public void pushRight(Piece selectedPiece) {
-        try {
+    public void pushRight(Piece selectedPiece) throws NotFoundPieceException {
             board.pushRight(selectedPiece);
-        } catch (NotFoundPieceException | rootIsNullException ex) {
-            Logger.getLogger(BoardLogic.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
     
     

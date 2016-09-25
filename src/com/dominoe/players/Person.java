@@ -7,7 +7,7 @@ package com.dominoe.players;
 
 import com.dominoe.players.pieces.PlayerPieces;
 import com.dominoe.exceptions.InvalidPiecePositionException;
-import com.dominoe.Board;
+import com.dominoe.board.Board;
 import com.dominoe.pieces.Pieces;
 import com.dominoe.pieces.Piece;
 import java.util.Random;

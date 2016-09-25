@@ -54,14 +54,14 @@ public class List {
             }
         return root.getPiece();
     }
-    public void pushLeft(Piece piece) throws NotFoundPieceException, rootIsNullException{
+    public void pushLeft(Piece piece) throws NotFoundPieceException{
         if(!isEmpty()){
             addLeft(piece, root);
         }else{
             initRoot(piece);
         }
     }
-    public void pushRight(Piece piece) throws NotFoundPieceException, rootIsNullException{
+    public void pushRight(Piece piece) throws NotFoundPieceException{
       if(!isEmpty()){
             addRight(piece, root);
         }else{
