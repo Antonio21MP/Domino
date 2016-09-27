@@ -1,10 +1,11 @@
 package com.dominoe;
 
-import com.dominoe.board.BoardLogic;
+import com.dominoe.board.ConsoleBoard;
 import com.dominoe.pieces.ArrayPieces;
-import com.dominoe.players.Person;
+import com.dominoe.players.ConsolePlayer;
 import com.dominoe.players.Player;
 import com.dominoe.players.PlayersCollection;
+import com.dominoe.players.pieces.PlayerDeck;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +17,15 @@ public class Main {
 
     public static void main(String[] args) {
         List<Player> players = new ArrayList<>();
-        players.add(new Person("Keny"));
-        players.add(new Person("Josue"));
-        DominoeGame dominoe = new DominoeGame(new BoardLogic(),new PlayersCollection(players),new ArrayPieces());
+        players.add(new ConsolePlayer("Keny",new PlayerDeck()));
+        players.add(new ConsolePlayer("Josue",new PlayerDeck()));
+        DominoGame dominoe = new DominoGame(new ConsoleBoard(),new PlayersCollection(players),new ArrayPieces());
         try{
             dominoe.init();
             dominoe.play();
         }catch(Exception e){
             System.out.println("Error: "+e.toString());
-            e.printStackTrace();
+            
         }
     }
     

@@ -11,5 +11,5 @@ public interface Board {
 
     public void pushRight(Piece selectedPiece) throws Exception;
 
-    public void printBorad();
+    public void printBoard();
 }

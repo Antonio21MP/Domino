@@ -50,9 +50,13 @@ public class Piece {
             secondValueConnected = true;
         }
     }
+    
+    public int getFreeValue() {
+        return (!firstValueConnected)?firstValue:secondValue;
+    }
 
     @Override
     public String toString() {
-        return "|"+firstValue+"-"+secondValue+"| <-> |"+(firstValueConnected?1:0) + "-"+(secondValueConnected?1:0)+"|";
+        return "|"+firstValue+"-"+secondValue+"|";
     }
 }
