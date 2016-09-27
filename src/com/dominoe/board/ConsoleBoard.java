@@ -3,11 +3,11 @@ package com.dominoe.board;
 import com.dominoe.exceptions.RootIsNullException;
 import com.dominoe.exceptions.PieceNotMatchWithAnySideException;
 import com.dominoe.pieces.Piece;
-public class BoardLogic implements Board {
-    List board;
+public class ConsoleBoard implements Board {
+    ConnectedPieces board;
     @Override
     public void init() {
-        board = new List();   
+        board = new ConnectedPieces();   
     }
 
     @Override
@@ -22,13 +22,15 @@ public class BoardLogic implements Board {
     }
 
     @Override
-    public void printBorad() {
+    public void printBoard() {
         try{
+            board.printInOrder();
+            
             Piece left = board.getLeftValue();
             Piece right = board.getRightValue();
 
-            System.out.println("Left: "+left);
-            System.out.println("Right: "+right);
+            System.out.print("\nLeft: "+left.getFreeValue());
+            System.out.println(" Right: "+right.getFreeValue());
         }catch(RootIsNullException e){
             System.out.println("|NaN-NaN|");
         }

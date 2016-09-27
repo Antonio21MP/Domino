@@ -6,12 +6,12 @@ import com.dominoe.exceptions.RootIsNullException;
 import com.dominoe.pieces.Piece;
 import com.dominoe.players.SIDES;
 
-public class List {
+public class ConnectedPieces {
     private Node root;
     private int size;
-    public List(){
+    public ConnectedPieces(){
         root = null;
-     
+        size=0;
     }
     private boolean isEmpty(){
         return root ==  null;
@@ -52,6 +52,7 @@ public class List {
         }else{
             initRoot(piece);
         }
+        size++;
     }
     public void pushRight(Piece piece) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken{
       if(!isEmpty()){
@@ -59,6 +60,7 @@ public class List {
         }else{
           initRoot(piece);
       }
+      size++;
     }
     
     private void addLeft(Piece piece, Node root) throws PieceNotMatchWithAnySideException, BothSidesOfPieceAreAlreadyTaken{
@@ -104,6 +106,7 @@ public class List {
             newNode.changeConnectionLeft(true);
         }else if(valueSideFor == piece.getSecondValue()){
             newNode.changeConnectionRight(true);
+            
         }
         
         if(newNode.getConnectionLeft() || newNode.getConnectionRight()){
@@ -114,6 +117,20 @@ public class List {
             }
         }else{
             throw new PieceNotMatchWithAnySideException(newNode);
+        }
+    }
+
+    void printInOrder() {
+        printInOrder(root);
+    }
+
+    private void printInOrder(Node root) {
+        if(root!=null){
+            if(root.getLeft()!=null)
+                printInOrder(root.getLeft());
+            System.out.print(root.getPiece()+" ");
+            if(root.getRight()!=null)
+                printInOrder(root.getRight());
         }
     }
 }

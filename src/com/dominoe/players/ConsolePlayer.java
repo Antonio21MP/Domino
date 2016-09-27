@@ -5,26 +5,27 @@
  */
 package com.dominoe.players;
 
+import com.dominoe.exceptions.PlaySurrenderedException;
+import com.dominoe.exceptions.PassPlayerException;
 import com.dominoe.players.pieces.PlayerPieces;
 import com.dominoe.exceptions.InvalidPiecePositionException;
 import com.dominoe.board.Board;
 import com.dominoe.pieces.Pieces;
 import com.dominoe.pieces.Piece;
-import com.dominoe.players.pieces.PlayerDeck;
 import java.util.Scanner;
 
 /**
  *
  * @author rnexer
  */
-public class Person  implements Player {
+public class ConsolePlayer  implements Player {
     public PlayerPieces pieces;
     private String name;
     Scanner scanner;
     
-    public Person(String name){
+    public ConsolePlayer(String name, PlayerPieces playerDeck){
         super();
-        pieces = new PlayerDeck();
+        pieces = playerDeck;
         pieces.init();
         this.name = name;
         scanner = new Scanner(System.in);
@@ -48,24 +49,30 @@ public class Person  implements Player {
         int selectedOption;
         do{
             System.out.println("Turno de: "+name);
-            System.out.println("Ingrese la posicion de la pieza a colocar o -1 para tomar de las sobrantes: ");
+            System.out.println("Ingrese la posicion de la pieza a colocar \n(-1 para tomar de las sobrantes) \n(-2 para pasar)\n(-3 salir): ");
             printMyPieces();
             System.out.print("escoja: ");
             selectedOption = scanner.nextInt();
-            if(selectedOption < 0)
+            if(selectedOption < 0){
+                if(selectedOption==-2 && deck.getSize()<=0)
+                    throw new PassPlayerException();
                 takePieceFromRemainder(deck);
-            else if(selectedOption < pieces.getSize()){
-                Piece selectedPiece = pieces.pop(selectedOption);
+                if(selectedOption==-3)
+                    throw new PlaySurrenderedException(name);
+            }else if(selectedOption < pieces.getSize()){
+                Piece selectedPiece = pieces.get(selectedOption);
                 SIDES side = selectSide();
                 if(side == SIDES.IZQUIERDA){
                     board.pushLeft(selectedPiece);
                 }else{
                     board.pushRight(selectedPiece);
                 }
+                pieces.pop(selectedOption);
                 
             }else{
                 throw new InvalidPiecePositionException();
             }
+            
         }while(selectedOption < 0);
     }
 
@@ -93,8 +100,12 @@ public class Person  implements Player {
     }
 
     @Override
-    public Piece getHighest() {
+    public Piece getHighestPiece() {
         return pieces.getHighestPiece();
     }
-    
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
