@@ -22,6 +22,6 @@ public interface Player {
 
     public void play(Board board, Pieces deck) throws Exception ;
     
-    public Piece getHighest();
+    public Piece getHighestPiece();
     
 }

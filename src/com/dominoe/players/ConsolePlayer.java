@@ -100,7 +100,7 @@ public class ConsolePlayer  implements Player {
     }
 
     @Override
-    public Piece getHighest() {
+    public Piece getHighestPiece() {
         return pieces.getHighestPiece();
     }
 

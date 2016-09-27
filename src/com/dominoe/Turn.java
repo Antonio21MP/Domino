@@ -17,13 +17,13 @@ import java.util.ArrayList;
  * @author rnexer
  */
 public class Turn {
-    ArrayList<ConsolePlayer> players;
+    ArrayList<Player> players;
     static int currentPlayerIndex = -1;
 
     static Turn init(Players players, Board board) throws Exception {
        Turn turn = new Turn();
        for(int i = 0; i < players.getSize(); i++) {
-           turn.players.add((ConsolePlayer)players.getPlayer(i));
+           turn.players.add(players.getPlayer(i));
        }
        turn.setInitialPLayer();
        return turn;
@@ -61,7 +61,7 @@ public class Turn {
         int currentLargest = -1;
         
         for (int i = 0; i < players.size(); i++) {
-            Piece currentHighest = players.get(i).pieces.getHighestPiece();
+            Piece currentHighest = players.get(i).getHighestPiece();
             if(currentHighest != null){
                 int firstValue = currentHighest.getFirstValue();
                 if (firstValue > currentLargest && (firstValue == currentHighest.getSecondValue())) {
